@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.github.santiagoangel</groupId>
+	<artifactId>mdbtest</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<properties>
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven.compiler.source>1.7</maven.compiler.source>
+	</properties>
+	<dependencies>
+		<dependency>
+    <groupId>org.jboss.spec</groupId>
+    <artifactId>jboss-javaee-6.0</artifactId>
+    <version>3.0.3.Final</version>
+    <type>pom</type>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.jboss.ejb3/jboss-ejb3-ext-api -->
+<dependency>
+    <groupId>org.jboss.ejb3</groupId>
+    <artifactId>jboss-ejb3-ext-api</artifactId>
+    <version>2.2.0.Final</version>
+    <scope>provided</scope>
+</dependency>
+
+
+	</dependencies>
+	<build>
+		<!-- Set the name of the war, used as the context root when the app is 
+			deployed -->
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+
+
+		</plugins>
+	</build>
+</project>

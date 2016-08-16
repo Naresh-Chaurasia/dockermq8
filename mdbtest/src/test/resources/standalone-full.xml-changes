@@ -1,0 +1,58 @@
+ </extensions>
+
+  <system-properties>
+  <property name="websphere.hostName" value="192.168.88.98"/>
+  <property name="websphere.port" value="1414"/>
+  <property name="websphere.channel" value="PASSWORD.SVRCONN"/>
+  <property name="websphere.transportType" value="CLIENT"/>
+  <property name="websphere.queueManager" value="QM1"/>
+  <property name="websphere.queueName" value="Q1"/>
+  <property name="websphere.resource.adapter" value="wmq.jmsra.rar"/>
+  <property name="websphere.username" value="volante"/>
+  <property name="websphere.password" value="volante123#"/>
+  </system-properties>
+  <subsystem xmlns="urn:jboss:domain:ee:4.0">
+  <spec-descriptor-property-replacement>false</spec-descriptor-property-replacement>
+  <annotation-property-replacement>true</annotation-property-replacement>
+  <subsystem xmlns="urn:jboss:domain:resource-adapters:4.0">
+  <resource-adapters>
+  <resource-adapter id="wmq.jmsra.rar">
+  <archive>wmq.jmsra.rar</archive>
+  <transaction-support>NoTransaction</transaction-support>
+  <connection-definitions>
+  <connection-definition class-name="com.ibm.mq.connector.outbound.ManagedConnectionFactoryImpl" jndi-name="java:/jboss/MyConnectionFactory" use-java-context="true" pool-name="mqconn">
+  <config-property name="hostName">${websphere.hostName:192.168.88.98}</config-property>
+                            <config-property name="password">
+                                ${websphere.password:volante123#}
+                            </config-property>
+                            <config-property name="queueManager">
+                                ${websphere.queueManager:QM1}
+                            </config-property>
+                            <config-property name="port">
+                                ${websphere.port:1414}
+                            </config-property>
+                            <config-property name="channel">
+                                ${websphere.channel:PASSWORD.SVRCONN}
+                            </config-property>
+                            <config-property name="transportType">
+                                ${websphere.transportType:CLIENT}
+                            </config-property>
+                            <config-property name="username">
+                                ${websphere.username:volante}
+                            </config-property>
+                            <security>
+                                <application/>
+                            </security>
+                        </connection-definition>
+                    </connection-definitions>
+                    <admin-objects>
+                        <admin-object class-name="com.ibm.mq.connector.outbound.MQQueueProxy" jndi-name="java:/jboss/test" use-java-context="true" pool-name="MQ.QUEUE.NAME">
+                            <config-property name="baseQueueName">
+                                ${websphere.queueName:Q1}
+                            </config-property>
+                        </admin-object>
+                    </admin-objects>
+                </resource-adapter>
+            </resource-adapters>
+        </subsystem>
+        
